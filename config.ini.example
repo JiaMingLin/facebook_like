@@ -1,0 +1,9 @@
+[system]
+version=test
+
+[authentication]
+app_id=<APP_ID>
+app_secret=<APP_SECRET>
+
+[api]
+api_version=2.8

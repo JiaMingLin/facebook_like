@@ -1,0 +1,66 @@
+<html>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">  
+<script type="text/javascript" charset="utf8" src="../js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../js/facebook_like.js"></script>
+<script type="text/javascript" language="javascript" class="init">
+$(document).ready(function() {
+	$(document).ajaxStart(function(){
+		$("#get_posts").prop('disabled', true);
+		$("#more_posts").prop('disabled', true);
+		$("#wait").css("display", "block");
+	});
+	$(document).ajaxComplete(function(){
+		$("#get_posts").prop('disabled', false);
+		$("#more_posts").prop('disabled', false);
+		$("#wait").css("display", "none");
+	});
+	$('#get_posts').click(function(){
+		var page_name = $('#page_name').val()
+		var search_keyword = $('#search_keyword').val()
+		getPosts(page_name, search_keyword)
+	});
+
+	$('#more_posts').click(function(){
+		var page_name = $('#page_name').val()
+		var search_keyword = $('#search_keyword').val()
+		getPosts(page_name, search_keyword, true)
+	});
+
+	$("#clear").click(function(){
+		clear()
+		window.parent.frames['like_list'].clear();
+		$("#more_posts").css("display", "none");
+	});
+} );
+ </script>
+<body>
+		<table>
+			<tr>
+				<td>
+					Page Name:
+				</td>
+				<td>
+					<div id="wait" style="display:none;width:30px;height:30px;border:1px solid black;position:absolute;padding:2px;"><img src='../images/demo_wait.gif' width="32" height="32" /><br>Loading..</div>
+				</td><td></td><td></td>
+			</tr>
+			<tr>
+				<td>
+					<input id='page_name' type="text" name="page_name">
+				</td>
+				<td>
+					<!--Search Keyword:<br><input id='search_keyword' type="text" name="search_keyword">-->
+				</td>
+				<td>
+					<button id='get_posts'>Get Page Posts</button>
+				</td>
+				<td>
+					<button id='clear'>Clear</button>
+				</td>
+			</tr>
+
+		</table>
+		<table id="data_table" class="display" width="100%"></table>
+		<button id='more_posts' style="display: none;">More Posts...</button>
+	</body>
+</html>

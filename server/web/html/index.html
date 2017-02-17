@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Facebook Likes</title>
+        <style>
+            body {
+               background-color: lightyellow;
+            }
+            em {
+                color: LightSeaGreen;
+            }
+            div.container {
+               width: 50%;
+            }
+        </style>
+        <script src="web/js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript">
+            var base_url = window.location.href;
+            $(document).ready(function(){
+                $('#base_url').val(base_url)
+                $('#post_id').change(function(){
+                    selected_id = $('#post_id').val()
+                    console.log(selected_id)
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <input type="hidden" id="base_url">
+        <input type="hidden" id="page_name">
+        <input type="hidden" id="search_keyword">
+        <iframe name='post_list' id='post_list' src="web/html/post_list.html" scrolling="auto" width='70%' height='550'></iframe>
+        <iframe name='like_list' id='like_list' src="web/html/like_list.html" scrolling="auto" width='28%' height='550' align="right"></iframe>
+    </body>
+</html>

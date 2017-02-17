@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">  
+<script type="text/javascript" charset="utf8" src="../js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../js/facebook_like.js"></script>
+<script type="text/javascript" language="javascript" class="init">
+$(document).ready(function(){
+    $(document).ajaxStart(function(){
+        $("#wait").css("display", "block");
+    });
+    $(document).ajaxComplete(function(){
+        $("#wait").css("display", "none");
+    });
+    $("#download_link").css("display", "none");
+});
+</script>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<table>
+	<tr>
+		<td>Post ID: </td>
+		<td><em id='post_id'></em></td>
+	</tr>
+	<tr>
+		<td>Counts: </td>
+		<td><em id='counts'></em></td>
+	</tr>
+	<tr>
+		<td>File: </td>
+		<td><a href="" id='download_link'>Link</a></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><div id="wait" style="display:none;width:30px;height:30px;border:1px solid black;position:absolute;padding:2px;"><img src='../images/demo_wait.gif' width="32" height="32" /><br>Loading..</div>
+		</td>
+	</tr>
+</table>
+
+<table id="data_table" class="display" width="100%"></table>
+</body>
+</html>
