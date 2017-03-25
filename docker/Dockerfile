@@ -12,12 +12,13 @@ RUN pip install django facepy && \
 ENV VERSION=0
 WORKDIR /opt
 RUN apt-get install git -y --force-yes && \
-    git clone https://gitlab.com/robin890650/facebook_like.git
+    git clone https://github.com/JiaMingLin/facebook_like.git
 
 ADD start.sh /opt/facebook_like/start.sh
 RUN chmod +x /opt/facebook_like/start.sh
 
-#VOLUME ["/opt/facebook_like/"] 
+VOLUME ["/opt/facebook_like/"] 
 
+WORKDIR /opt/facebook_like
 EXPOSE 8080
 ENTRYPOINT /opt/facebook_like/start.sh
